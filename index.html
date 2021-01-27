@@ -92,7 +92,9 @@
 
             document.getElementById(id2).innerText = totalNum - 1219;
 
-            
+            var Subtotal=document.getElementById('subtotalValue').innerText;
+            var subtotalNum=parseFloat(Subtotal);
+            document.getElementById('subtotalValue').innerText=newValue*1219;
 
          })
       }
@@ -115,7 +117,10 @@
 
             document.getElementById(id2).innerText = result;
 
-           
+            var Subtotal=document.getElementById('subtotalValue').innerText;
+            var subtotalNum=parseFloat(Subtotal);
+            document.getElementById('subtotalValue').innerText=newValue*1219;
+
 
 
          })
@@ -137,7 +142,9 @@
 
             document.getElementById(id2).innerText = totalNum - 59;
 
-          
+            var Subtotal=document.getElementById('subtotalValue').innerText;
+            var subtotalNum=parseFloat(Subtotal);
+            document.getElementById('subtotalValue').innerText=newValue*59;
          })
       }
 
@@ -171,15 +178,7 @@
 
     
       
-            var first=document.getElementById('totalValue').innerText;
-            var firstValue=parseFloat(first);
-            
-            var second=document.getElementById('secondTotalValue').innerText;
-            var secondValue=parseFloat(second);
-            var result=firstValue+secondValue;
-            var Subtotal=document.getElementById('subtotalValue').innerText;
-            var subtotalNum=parseFloat(Subtotal);
-            document.getElementById('subtotalValue').innerText=subtotalNum+firstValue;
+          
    </script>
 </body>
 
