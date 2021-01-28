@@ -65,8 +65,8 @@
 
                      <div class="col-md-4 status">
                         <h5>$<span id="subtotalValue">1278</span></h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="taxAmount">0</span></h5>
+                        <h5>$<span id="grandTotal">1278</span></h5>
                      </div>
                   </div>
                </div>
@@ -84,7 +84,10 @@
             var Value = document.getElementById(id1).value;
             var Value = parseFloat(Value);
             var newValue = Value - 1;
-
+            if(newValue<0){
+               return;
+            }
+            else{
             document.getElementById(id1).value = newValue;
 
             var total = document.getElementById(id2).innerText;
@@ -94,8 +97,9 @@
 
             var Subtotal=document.getElementById('subtotalValue').innerText;
             var subtotalNum=parseFloat(Subtotal);
-            document.getElementById('subtotalValue').innerText=newValue*1219;
-
+            document.getElementById('subtotalValue').innerText=subtotalNum-1219;
+            calculateTotal();
+            } 
          })
       }
       firstMinusSignBtn('firstMinusBtn', 'firstValue', 'totalValue');
@@ -108,7 +112,10 @@
             var value0 = parseFloat(Value);
 
             var newValue = value0 + 1;
-
+            if(newValue<0){
+               return;
+            }
+            else{
             document.getElementById(id1).value = newValue;
 
             var total = document.getElementById(id2).innerText;
@@ -119,10 +126,9 @@
 
             var Subtotal=document.getElementById('subtotalValue').innerText;
             var subtotalNum=parseFloat(Subtotal);
-            document.getElementById('subtotalValue').innerText=newValue*1219;
-
-
-
+            document.getElementById('subtotalValue').innerText=subtotalNum+1219;
+               calculateTotal();
+            }
          })
 
       }
@@ -134,7 +140,10 @@
             var Value = document.getElementById(id1).value;
             var Value = parseFloat(Value);
             var newValue = Value - 1;
-
+            if(newValue<0){
+               return;
+            }
+            else{
             document.getElementById(id1).value = newValue;
 
             var total = document.getElementById(id2).innerText;
@@ -145,6 +154,12 @@
             var Subtotal=document.getElementById('subtotalValue').innerText;
             var subtotalNum=parseFloat(Subtotal);
             document.getElementById('subtotalValue').innerText=newValue*59;
+
+            var Subtotal=document.getElementById('subtotalValue').innerText;
+            var subtotalNum=parseFloat(Subtotal);
+            document.getElementById('subtotalValue').innerText=subtotalNum-59;
+            calculateTotal();
+            }
          })
       }
 
@@ -157,7 +172,10 @@
             var value0 = parseFloat(Value);
 
             var newValue = value0 + 1;
-
+            if(newValue<0){
+               return;
+            }
+            else{
             document.getElementById(id1).value = newValue;
 
             var total = document.getElementById(id2).innerText;
@@ -167,9 +185,11 @@
             document.getElementById(id2).innerText = result;
 
            
-
-
-
+            var Subtotal=document.getElementById('subtotalValue').innerText;
+            var subtotalNum=parseFloat(Subtotal);
+            document.getElementById('subtotalValue').innerText=subtotalNum+59;
+               calculateTotal();
+            } 
          })
 
       }
@@ -177,7 +197,22 @@
       secondPlusSignBtn('secondPlusBtn', 'secondValue', 'secondTotalValue');
 
     
-      
+      function calculateTotal(){
+         var phoneInput=document.getElementById('firstValue').value;
+         var phoneNum=parseFloat(phoneInput);
+
+         var caseInput=document.getElementById('secondValue').value;
+         var caseNum=parseFloat(caseInput);
+         var total=phoneNum*1219+caseNum*59;
+         document.getElementById('subtotalValue').innerText=total;
+         
+         var tax =Math.round(total*0.1);
+         document.getElementById('taxAmount').innerText=tax;
+
+         var grandTotal=total+tax;
+         document.getElementById('grandTotal').innerText=grandTotal;
+
+      }
           
    </script>
 </body>
